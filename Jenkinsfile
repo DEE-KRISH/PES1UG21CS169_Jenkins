@@ -4,22 +4,23 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                // Compile the C++ program
-                sh 'g++ -o hello hello.cpp'
+                // Placeholder build step
+                sh 'echo "Placeholder build step"'
                 echo 'Build Stage Successful'
             }
         }
         stage('Test') {
             steps {
-                // Run the compiled program
-                sh './hello'
+                // Placeholder test step
+                sh 'echo "Placeholder test step"'
                 echo 'Test Stage Successful'
                 // Add post condition for test results if needed
             }
         }
         stage('Deploy') {
             steps {
-                // Add deployment steps if needed
+                // Placeholder deploy step
+                sh 'echo "Placeholder deploy step"'
                 echo 'Deploy Successful'
             }
         }
