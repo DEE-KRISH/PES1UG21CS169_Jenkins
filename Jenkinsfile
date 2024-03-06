@@ -1,31 +1,32 @@
-pipeline {
+pipeline{
     agent any
-    
     stages {
         stage('Build') {
             steps {
-                // Define build steps here
-                sh 'make'
+                sh 'mvn clean install'
+                echo 'Build Stage Successful'
             }
         }
         stage('Test') {
-            steps {
-                // Define test steps here
-                sh 'make test'
+            steps{
+                sh 'mvn test'
+                echo 'Test Stage Successful'
+                post {
+                    always {
+                        junit 'target/surefire-reports/*.xml'
+                    }
+                }
             }
         }
         stage('Deploy') {
             steps {
-                // Define deployment steps here
-                sh 'make deploy'
+                sh 'mvn deploy'
+                echo 'Deploy Successful'
+                
             }
         }
     }
-    
     post {
-        always {
-            echo 'Pipeline completed'
-        }
         failure {
             echo 'Pipeline failed'
         }
